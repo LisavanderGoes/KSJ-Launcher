@@ -1,4 +1,4 @@
-package com.baronmusic.lasa.ksj_launcher
+package com.lasa.ksj_launcher
 
 import org.junit.Test
 

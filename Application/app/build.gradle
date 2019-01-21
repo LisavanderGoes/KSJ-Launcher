@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.baronmusic.lasa.ksj_launcher"
+        applicationId "com.lasa.ksj_launcher"
         minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
