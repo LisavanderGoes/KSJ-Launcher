@@ -1,0 +1,17 @@
+REQUIREMENTS
+============
+- icons 3 tints
+- mp3 widget
+- contact launcher
+	- bellen
+	- sms
+
+
+SCREENS
+=======
+- home
+- all apps
+- hidden apps
+- games
+- bulletbord
+- mp3 widget
