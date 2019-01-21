@@ -13,5 +13,9 @@ SCREENS
 - all apps
 - hidden apps
 - games
-- bulletbord
+- notification bord
 - mp3 widget
+
+V2
+==
+- settings
