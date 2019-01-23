@@ -2,7 +2,9 @@ package com.lasa.ksj_launcher.Main
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
+import android.view.View
 import com.lasa.ksj_launcher.Models.PresentableApp
 
 class CompleteAppListDataSource(private val manager: PackageManager): PresentableAppsDataSource {
@@ -20,8 +22,8 @@ class CompleteAppListDataSource(private val manager: PackageManager): Presentabl
         val availableActivities = manager.queryIntentActivities(intent, 0)
         for (availableActivity in availableActivities) {
             val app = PresentableApp(
-                    availableActivity.loadLabel(manager),
                     availableActivity.activityInfo.packageName,
+                    availableActivity.loadLabel(manager),
                     availableActivity.loadIcon(manager)
             )
             Log.e("tag", app.toString())

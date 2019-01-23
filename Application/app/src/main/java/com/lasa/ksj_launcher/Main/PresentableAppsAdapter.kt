@@ -1,6 +1,7 @@
 package com.lasa.ksj_launcher.Main
 
 import android.content.Context
+import android.support.v4.content.ContextCompat.startActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,6 @@ class PresentableAppsAdapter(
         val appView = inflator.inflate(R.layout.presentable_apps_item, null)
         appView.icon.setImageDrawable(app?.icon)
         appView.name.text = app?.label
-
         return appView
     }
 
