@@ -2,13 +2,14 @@ package com.lasa.ksj_launcher.Main
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
-import android.view.View
+import com.lasa.ksj_launcher.Main.Interface.PresentableAppsDataSource
 import com.lasa.ksj_launcher.Models.PresentableApp
 
 class CompleteAppListDataSource(private val manager: PackageManager): PresentableAppsDataSource {
+
     private var apps: ArrayList<PresentableApp>
+
     init {
         apps = arrayListOf()
         loadApps()
@@ -29,10 +30,6 @@ class CompleteAppListDataSource(private val manager: PackageManager): Presentabl
             Log.e("tag", app.toString())
             apps.add(app)
         }
-    }
-
-    fun getApps(): ArrayList<PresentableApp> {
-        return apps
     }
 
     override fun getApp(position: Int): PresentableApp? {

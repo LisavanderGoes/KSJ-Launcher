@@ -1,4 +1,4 @@
-package com.lasa.ksj_launcher.Main
+package com.lasa.ksj_launcher.Main.Interface
 
 import com.lasa.ksj_launcher.Models.PresentableApp
 
