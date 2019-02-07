@@ -21,6 +21,7 @@
         <activity
             android:name=".View.AppTabsActivity"
             android:theme="@style/TransparentDarkTheme"/>
+        <activity android:name=".View.HomeActivity" />
     </application>
 
 </manifest>

@@ -8,28 +8,28 @@ import com.lasa.ksj_launcher.Main.AppTabsFragmentAdapter
 import com.lasa.ksj_launcher.Models.PresentableApp
 import com.lasa.ksj_launcher.Models.TabPage
 import com.lasa.ksj_launcher.R
-import kotlinx.android.synthetic.main.app_tabs_activity.*
+import kotlinx.android.synthetic.main.home_activity.*
 
-class AppTabsActivity: AppCompatActivity() {
-
+class HomeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.app_tabs_activity)
+        setContentView(R.layout.home_activity)
 
         val list = arrayListOf(
-                TabPage("name2", arrayListOf(PresentableApp("", "", null))),
-                TabPage("name1", arrayListOf(PresentableApp("", "", null)))
+                TabPage("", loadAllApps()),
+                TabPage("", loadAllApps())
         )
 
-        list.add(TabPage("Apps", loadAllApps()))
         val fragmentAdapter = AppTabsFragmentAdapter(
                 supportFragmentManager,
                 list,
                 this
         )
+        gesture_view.setOnTouchListener { view, event ->
+            // ... Respond to touch events
+            true
+        }
         viewpager.adapter = fragmentAdapter
-        tabs.setupWithViewPager(viewpager)
-        viewpager.currentItem = list.count()-1
     }
 
     private fun loadAllApps(): ArrayList<PresentableApp> {

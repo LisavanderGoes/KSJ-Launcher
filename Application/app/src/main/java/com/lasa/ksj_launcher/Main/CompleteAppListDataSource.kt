@@ -6,38 +6,38 @@ import android.util.Log
 import com.lasa.ksj_launcher.Main.Interface.PresentableAppsDataSource
 import com.lasa.ksj_launcher.Models.PresentableApp
 
-class CompleteAppListDataSource(private val manager: PackageManager): PresentableAppsDataSource {
-
-    private var apps: ArrayList<PresentableApp>
-
-    init {
-        apps = arrayListOf()
-        loadApps()
-    }
-
-
-    private fun loadApps() {
-        val intent = Intent(Intent.ACTION_MAIN, null)
-        intent.addCategory(Intent.CATEGORY_LAUNCHER)
-
-        val availableActivities = manager.queryIntentActivities(intent, 0)
-        for (availableActivity in availableActivities) {
-            val app = PresentableApp(
-                    availableActivity.activityInfo.packageName,
-                    availableActivity.loadLabel(manager),
-                    availableActivity.loadIcon(manager)
-            )
-            Log.e("tag", app.toString())
-            apps.add(app)
-        }
-    }
-
-    override fun getApp(position: Int): PresentableApp? {
-        return apps[position]
-    }
-
-    override fun getCount(): Int {
-        return apps.count()
-    }
-
-}
+//class CompleteAppListDataSource(private val manager: PackageManager): PresentableAppsDataSource {
+//
+//    private var apps: ArrayList<PresentableApp>
+//
+//    init {
+//        apps = arrayListOf()
+//        loadApps()
+//    }
+//
+//
+//    private fun loadApps() {
+//        val intent = Intent(Intent.ACTION_MAIN, null)
+//        intent.addCategory(Intent.CATEGORY_LAUNCHER)
+//
+//        val availableActivities = manager.queryIntentActivities(intent, 0)
+//        for (availableActivity in availableActivities) {
+//            val app = PresentableApp(
+//                    availableActivity.activityInfo.packageName,
+//                    availableActivity.loadLabel(manager),
+//                    availableActivity.loadIcon(manager)
+//            )
+//            Log.e("tag", app.toString())
+//            apps.add(app)
+//        }
+//    }
+//
+//    override fun getApp(position: Int): PresentableApp? {
+//        return apps[position]
+//    }
+//
+//    override fun getCount(): Int {
+//        return apps.count()
+//    }
+//
+//}

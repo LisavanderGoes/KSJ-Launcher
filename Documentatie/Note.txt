@@ -1,0 +1,17 @@
+val apps = loadAllApps()
+
+        var i = 0
+        val tabPages = arrayListOf<TabPage>()
+        var list = arrayListOf<PresentableApp>()
+
+        for (item in apps) {
+            if (i != 20) {
+                list.add(item)
+                i++
+            } else if (i == 20) {
+                tabPages.add(TabPage("", list))
+                list = arrayListOf()
+                i = 0
+            }
+        }
+        tabPages.add(TabPage("", list))

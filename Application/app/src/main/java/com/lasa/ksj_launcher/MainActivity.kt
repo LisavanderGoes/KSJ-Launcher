@@ -3,15 +3,13 @@ package com.lasa.ksj_launcher
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.lasa.ksj_launcher.View.AppTabsActivity
 import android.view.WindowManager
-
-
+import com.lasa.ksj_launcher.View.HomeActivity
 
 class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent = Intent(this, AppTabsActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
 
         val w = window
