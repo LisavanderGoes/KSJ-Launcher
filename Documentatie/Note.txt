@@ -15,3 +15,25 @@ val apps = loadAllApps()
             }
         }
         tabPages.add(TabPage("", list))
+
+==============================================
+
+        override fun onViewDragStateChanged(state: Int) {
+            if (state == mDraggingState) { // no change
+                return
+            }
+            if ((mDraggingState == ViewDragHelper.STATE_DRAGGING || mDraggingState == ViewDragHelper.STATE_SETTLING) && state == ViewDragHelper.STATE_IDLE) {
+                // the view stopped from moving.
+
+                if (mDraggingBorder == 0) {
+                    onStopDraggingToClosed()
+                } else if (mDraggingBorder == mHorizontalRange) {
+                    isOpen = true
+                }
+            }
+            if (state == ViewDragHelper.STATE_DRAGGING) {
+                onStartDragging()
+            }
+            mDraggingState = state
+        }
+

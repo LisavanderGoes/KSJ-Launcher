@@ -7,14 +7,19 @@ import android.view.WindowManager
 import com.lasa.ksj_launcher.View.HomeActivity
 
 class MainActivity: AppCompatActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        val intent = Intent(this, HomeActivity::class.java)
+//        startActivity(intent)
+//
+//        val w = window
+//        w.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+//        w.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+//    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-
-        val w = window
-        w.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        w.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        setContentView(R.layout.main_activity)
     }
 }
 
