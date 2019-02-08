@@ -18,12 +18,12 @@
 
         <LinearLayout
             android:id="@+id/main_layout"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:clickable="true"
             android:background="@color/transparantDarkColor"
             android:orientation="vertical">
-
         </LinearLayout>
+
     </com.lasa.ksj_launcher.Main.Interface.DraggingPanel>
 </RelativeLayout>

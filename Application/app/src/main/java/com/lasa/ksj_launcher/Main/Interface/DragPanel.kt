@@ -18,6 +18,7 @@ class DraggingPanel(context: Context, attrs: AttributeSet) : RelativeLayout(cont
     private var mDraggingBorder: Int = 0
     private var mHorizontalRange: Int = 0
     private var mDragView: LinearLayout? = null
+    private var mTouchView: LinearLayout? = null
     var isOpen: Boolean = false
         private set
 
@@ -76,6 +77,7 @@ class DraggingPanel(context: Context, attrs: AttributeSet) : RelativeLayout(cont
 
     override fun onFinishInflate() {
         mDragView  = findViewById(R.id.main_layout)
+        mTouchView = findViewById(R.id.touch_layout)
         mDragHelper = ViewDragHelper.create(this, 1.0f, DragHelperCallback())
         isOpen = false
         super.onFinishInflate()
@@ -111,7 +113,7 @@ class DraggingPanel(context: Context, attrs: AttributeSet) : RelativeLayout(cont
         val top = top
         val bottom = bottom
         val right = r - offSet
-        val left = -offSet + 10
+        val left = -offSet + 1
 
         mDragView!!.layout(left, top, right, bottom)
     }
