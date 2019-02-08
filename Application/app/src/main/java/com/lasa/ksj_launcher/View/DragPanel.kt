@@ -1,4 +1,4 @@
-package com.lasa.ksj_launcher.Main.Interface
+package com.lasa.ksj_launcher.View
 
 import android.content.Context
 import android.support.v4.view.MotionEventCompat
@@ -12,13 +12,12 @@ import android.widget.RelativeLayout
 import com.lasa.ksj_launcher.R
 
 
-class DraggingPanel(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs) {
+class DraggingPanel(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     private val AUTO_OPEN_SPEED_LIMIT = 800.0
     private var mDragHelper: ViewDragHelper? = null
     private var mDraggingBorder: Int = 0
     private var mHorizontalRange: Int = 0
     private var mDragView: LinearLayout? = null
-    private var mTouchView: LinearLayout? = null
     var isOpen: Boolean = false
         private set
 
@@ -76,15 +75,14 @@ class DraggingPanel(context: Context, attrs: AttributeSet) : RelativeLayout(cont
     }
 
     override fun onFinishInflate() {
-        mDragView  = findViewById(R.id.main_layout)
-        mTouchView = findViewById(R.id.touch_layout)
+        mDragView  = getChildAt(0) as LinearLayout?
         mDragHelper = ViewDragHelper.create(this, 1.0f, DragHelperCallback())
         isOpen = false
         super.onFinishInflate()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        mHorizontalRange = -100
+        mHorizontalRange = -50
         super.onSizeChanged(w, h, oldw, oldh)
     }
 
@@ -99,7 +97,7 @@ class DraggingPanel(context: Context, attrs: AttributeSet) : RelativeLayout(cont
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         mDragHelper!!.processTouchEvent(event)
-        return true
+        return false
     }
 
     override fun computeScroll() { // needed for automatic settling.
@@ -109,7 +107,7 @@ class DraggingPanel(context: Context, attrs: AttributeSet) : RelativeLayout(cont
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-        val offSet = width - 200
+        val offSet = width - 50
         val top = top
         val bottom = bottom
         val right = r - offSet

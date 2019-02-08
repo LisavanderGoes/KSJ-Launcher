@@ -16,20 +16,25 @@ class AppTabsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.app_tabs_activity)
 
-        val list = arrayListOf(
+        val mainList = arrayListOf(
                 TabPage("name2", arrayListOf(PresentableApp("", "", null))),
                 TabPage("name1", arrayListOf(PresentableApp("", "", null)))
         )
 
-        list.add(TabPage("Apps", loadAllApps()))
+        val drawerList = arrayListOf(
+                TabPage("name2", arrayListOf(PresentableApp("", "", null))),
+                TabPage("name1", arrayListOf(PresentableApp("", "", null)))
+        )
+
         val fragmentAdapter = AppTabsFragmentAdapter(
                 supportFragmentManager,
-                list,
+                mainList,
+                drawerList,
                 this
         )
         viewpager.adapter = fragmentAdapter
         tabs.setupWithViewPager(viewpager)
-        viewpager.currentItem = list.count()-1
+        viewpager.currentItem = drawerList.count()-1
     }
 
     private fun loadAllApps(): ArrayList<PresentableApp> {

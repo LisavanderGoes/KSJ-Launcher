@@ -2,8 +2,10 @@ package com.lasa.ksj_launcher.View
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.WindowManager
 import com.lasa.ksj_launcher.Main.AppTabsFragmentAdapter
 import com.lasa.ksj_launcher.Models.PresentableApp
 import com.lasa.ksj_launcher.Models.TabPage
@@ -15,21 +17,24 @@ class HomeActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
 
-        val list = arrayListOf(
+        val mainList = arrayListOf(
                 TabPage("", loadAllApps()),
                 TabPage("", loadAllApps())
         )
 
+        val drawerList = arrayListOf(
+                TabPage("name2", loadAllApps()),
+                TabPage("name1", loadAllApps())
+        )
+
         val fragmentAdapter = AppTabsFragmentAdapter(
                 supportFragmentManager,
-                list,
+                mainList,
+                drawerList,
                 this
         )
-        gesture_view.setOnTouchListener { view, event ->
-            // ... Respond to touch events
-            true
-        }
         viewpager.adapter = fragmentAdapter
+        viewpager.currentItem = drawerList.count()
     }
 
     private fun loadAllApps(): ArrayList<PresentableApp> {
@@ -49,5 +54,21 @@ class HomeActivity: AppCompatActivity() {
             apps.add(app)
         }
         return apps
+    }
+
+    private fun sortApps(
+            allApps: ArrayList<PresentableApp>,
+            sortApps: ArrayList<String>
+    ): ArrayList<PresentableApp> {
+        val list = arrayListOf<PresentableApp>()
+
+        for (app in allApps) {
+            for (packageName in sortApps) {
+                if (app.label == packageName) {
+                    list.add(PresentableApp(app.name, app.label, app.icon))
+                }
+            }
+        }
+        return list
     }
 }
